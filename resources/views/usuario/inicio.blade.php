@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>SGD</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-	<script src="{{ asset('jquery/jquery.min.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('jquery/jquery.js') }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>

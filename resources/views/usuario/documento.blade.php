@@ -1,7 +1,7 @@
 @extends('usuario.inicio')
 @section('formulario')
 	<div class="container">
-		<form action="{{ route('configuracion_guardar_documento') }}" method="post" accept-charset="utf-8">
+		<form action="{{ route('configuracion_guardar_documento') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 		@csrf
 			<div class="row">
 				<div class="col-md-6">
@@ -62,7 +62,10 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label>Subir Documento</label>
-					<input type="file" class="form-control form-control-sm" name="subir" id="subir">
+					<input type="file" class="form-control form-control-sm" name="subir">
+					@error('subir')
+					<small>error al subir documento</small>
+					@enderror
 				</div>
 			</div>
 			<br>

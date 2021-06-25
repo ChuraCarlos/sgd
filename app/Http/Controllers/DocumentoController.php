@@ -9,6 +9,7 @@ use App\Models\personal;
 use App\Models\documento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentoController extends Controller
 {
@@ -46,23 +47,29 @@ class DocumentoController extends Controller
 
         //$documento = DB::table('documento')->count();
         //$cantidad = $documento==0 ? 1 : 3;
-        
-        $table_documento = new documento();
-        //$table_documento->codigo = $request->codigo;
-        $table_documento->fk_modelo = $request->modelo;
-        $table_documento->nro_documento = $request->numero;
-        $table_documento->descripcion = $request->descripcion;
-        $table_documento->f_registro = $request->fecha;
-        $table_documento->ruta = "/";
-        $table_documento->year = date('Y');
-        $table_documento->fk_personal = $personal;
-        $table_documento->fk_area = $request->dirigir;
-        $table_documento->observacion = $request->observacion;
-        $table_documento->nro_adjunto = $request->adjunto;
-        
-        $table_documento->save();
-        
-        return redirect()->route('configuracion_ver_documento');
+
+            if($request->hasFile("subir")){
+                $doc = $request->file('subir')->store('public/archivo');
+                $url = Storage::url($doc);
+
+            $table_documento = new documento();
+            //$table_documento->codigo = $request->codigo;
+            $table_documento->fk_modelo = $request->modelo;
+            $table_documento->nro_documento = $request->numero;
+            $table_documento->descripcion = $request->descripcion;
+            $table_documento->f_registro = $request->fecha;
+            $table_documento->ruta = $url;
+            $table_documento->year = date('Y');
+            $table_documento->fk_personal = $personal;
+            $table_documento->fk_area = $request->dirigir;
+            $table_documento->observacion = $request->observacion;
+            $table_documento->nro_adjunto = $request->adjunto;
+            $table_documento->fk_estado = 4;
+
+            $table_documento->save();
+            
+            return redirect()->route('configuracion_ver_documento');
+            }
         }
     }
 }
