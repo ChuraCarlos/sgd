@@ -25,6 +25,7 @@
 								<th>Enviar</th>
 								<th>Observacion</th>
 								<th>Estado</th>
+								<th>Documento</th>
 								<th>Editar</th>
 								<th>Eliminar</th>
 							</tr>
@@ -39,6 +40,7 @@
 								<td>{{ $documento->nombre_area }}</td>
 								<td>{{ $documento->observacion }}</td>
 								<td>No enviado</td>
+								<td><a href="{{ $documento->ruta }}" title="">Ver Documento</a></td>
 								<td><button class="btn btn-warning">E</button></td>
 								<td><button class="btn btn-danger">X</button></td>
 							</tr>

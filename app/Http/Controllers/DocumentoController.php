@@ -28,7 +28,7 @@ class DocumentoController extends Controller
         ->join('personal','personal.id_personal','=','fk_personal')
         ->join('modelo','modelo.id_modelo','=','fk_modelo')
         ->where('year','=',$years)
-        ->get(['id_documento','nombre_modelo','descripcion','f_registro','year','nombre_area','observacion','nro_adjunto']);
+        ->get(['id_documento','nombre_modelo','descripcion','f_registro','year','nombre_area','observacion','nro_adjunto','ruta']);
         
         $datos = [
             'documentos'=>$documento
