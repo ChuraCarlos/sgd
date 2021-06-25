@@ -84,7 +84,7 @@ class UsuarioController extends Controller
         //$ver = User::where('login',$request->login)->first();
     
         if($ver->clave==$request->clave){
-             
+
              //return($ver->fk_usuario);
              $id_personal = $request->session()->put("personal",$ver->id_personal);
              $nombre = $request->session()->put("nombre",$ver->nombre);
@@ -92,6 +92,7 @@ class UsuarioController extends Controller
              $materno = $request->session()->put("materno",$ver->materno);
              $cargo = $request->session()->put("cargo",$ver->fk_cargo);
              $area = $request->session()->put("area",$ver->fk_area);
+             $tipo = $request->session()->put("tipo",$ver->tipo_usuario);
 
              $box = [
                 'nombre'=>$nombre,

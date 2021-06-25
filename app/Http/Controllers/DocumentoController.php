@@ -23,18 +23,47 @@ class DocumentoController extends Controller
         return view('usuario.documento',$datos);
     }
     public function buscar_documento(){
+
+        $area = DB::table('area')->get();
+        $modelo = DB::table('modelo')->get();
+
         $years = date('Y');
         $documento = documento::join('area','area.id_area','=','fk_area')
         ->join('personal','personal.id_personal','=','fk_personal')
         ->join('modelo','modelo.id_modelo','=','fk_modelo')
         ->where('year','=',$years)
-        ->get(['id_documento','nombre_modelo','descripcion','f_registro','year','nombre_area','observacion','nro_adjunto','ruta']);
+        ->get(['id_documento','id_modelo','nombre_modelo','descripcion','f_registro','year','id_area','nombre_area','observacion','nro_adjunto','ruta']);
         
         $datos = [
-            'documentos'=>$documento
+            'documentos'=>$documento,
+            'areas'=>$area,
+            'modelos'=>$modelo,
         ];
      
         return view('usuario.enviar',$datos);
+    }
+    public function editar(Request $request){
+        $id = $request->iden;
+        $cargo = documento::findOrFail($id);
+        $cargo->fk_area = $request->area;
+        $cargo->fk_modelo = $request->modelo;
+        $cargo->descripcion = $request->descripcion;
+        $cargo->f_registro = $request->fecha;
+        $cargo->observacion = $request->observacion;
+        if($request->hasFile("documento")){
+            $cargo->ruta = $request->documento;
+        }
+        $cargo->nro_adjunto = $request->adjunto;
+        $cargo->save();
+        
+        return redirect()->route('buscar_documento');
+    }
+    public function eliminar(Request $request){
+        $id = $request->identi;
+        $remover = documento::find($id);
+        $remover->delete();
+    
+        return redirect()->route('buscar_documento');
     }
     public function guardar_documento(Request $request){
         

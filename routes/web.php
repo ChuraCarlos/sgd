@@ -70,3 +70,5 @@ Route::post('modelo',[ModeloController::class,'guardar_modelo'])->name('configur
 Route::get('documento',[DocumentoController::class,'index'])->name('configuracion_ver_documento');
 Route::post('documento',[DocumentoController::class,'guardar_documento'])->name('configuracion_guardar_documento');
 Route::get('buscar_archivo',[DocumentoController::class,'buscar_documento'])->name('buscar_documento');
+Route::post('documento/editar',[DocumentoController::class,'editar'])->name('editar_envio');
+Route::post('documento/eliminar',[DocumentoController::class,'eliminar'])->name('eliminar_envio');

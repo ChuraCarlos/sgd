@@ -1,10 +1,16 @@
 // $(document).ready(function (){
 // 	buscar();
 // });
-const editar = (a,b) =>{
+const editar = (a,b,c,d,e,f,g) =>{
 
 	$("#iden").val(a);
-	$("#nombre").val(b);
+	$("#modelo").val(b);
+	$("#descripcion").val(c);
+	$("#fecha").val(d);
+	$("#area").val(e);
+	$("#observacion").val(f);
+	$("#adjunto").val(g);
+	
 }
 const eliminar = (a) =>{
 	$("#identi").val(a);

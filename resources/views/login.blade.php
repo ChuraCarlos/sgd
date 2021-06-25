@@ -11,11 +11,9 @@
 </head>
 <body>
 	
-		<div class="container-fluid">
+		<div class="container-fluid escudo">
 			<div class="row vh-100 justify-content-center align-items-center">
-				<div class="col-4 bg-light p-5 shadow-lg">
-					
-				
+				<div class="col-4 p-5 shadow-lg fondo">
 				<form action="{{ route('verificar') }}" method="post" accept-charset="utf-8">
 				@csrf
 				<div>
@@ -33,8 +31,12 @@
 						<button type="submit" class="btn btn-success btn-sm btn-block">Ingresar</button>
 				</div>
 				</form>
+				<br>
+				<h5>SUBPREFECTURA PROVINCIAL DE ILO</h5>
 				</div>
+
 			</div>
+
 		</div>
 
 </body>
